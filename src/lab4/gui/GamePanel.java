@@ -90,8 +90,8 @@ public class GamePanel extends JPanel implements Observer{
                graphics2D.setColor(Color.BLACK);
                graphics2D.setStroke(new BasicStroke(2));
 
-               graphics2D.drawLine(column - padding, row, column + padding, row);
-               graphics2D.drawLine(column + UNIT_SIZE, row - padding, column, row + padding);
+               graphics2D.drawLine(column + padding, row + padding, column + UNIT_SIZE - padding, row + UNIT_SIZE - padding);
+               graphics2D.drawLine(column, row - UNIT_SIZE + padding, column + UNIT_SIZE - padding, row + padding);
                graphics2D.setStroke(regularStroke);
             }
          }

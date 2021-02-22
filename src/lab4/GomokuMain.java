@@ -17,7 +17,7 @@ public class GomokuMain
          portNumber = Integer.parseInt(args[0]);
 
       else
-         portNumber = 4001;
+         portNumber = 5400;
 
       client = new GomokuClient(portNumber);
       state = new GomokuGameState(client);

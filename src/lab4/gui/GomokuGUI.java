@@ -1,4 +1,5 @@
 package lab4.gui;
+import java.awt.Container;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -32,20 +33,33 @@ public class GomokuGUI implements Observer{
       this.gamestate = g;
       client.addObserver(this);
       gamestate.addObserver(this);
-
-      JFrame frame = new JFrame();
+      
+      SpringLayout layout;
+      Container contentPane;
+      
+      JFrame frame = new JFrame("Gomoku");
+      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      frame.setLocation(200, 200);
+      frame.setVisible(true);
+      
+      layout = new SpringLayout();
 
       gameGridPanel = new GamePanel(gamestate.getGameGrid());
       messageLabel = new JLabel();
       connectButton = new JButton("Connect");
       newGameButton = new JButton("New Game");
       disconnectButton = new JButton("Disconnect");
-
-      frame.add(messageLabel);
-
-
-
-
+      
+      contentPane = frame.getContentPane();
+      contentPane.setLayout(layout);
+      contentPane.add(gameGridPanel);
+      contentPane.add(connectButton);
+      contentPane.add(newGameButton);
+      contentPane.add(disconnectButton);
+      contentPane.add(messageLabel);
+      
+      layout.putConstraint(SpringLayout.WEST, gameGridPanel, 5, SpringLayout.WEST, contentPane);
+     
    }
 
 
