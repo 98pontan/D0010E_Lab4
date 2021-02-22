@@ -40,12 +40,14 @@ public class GomokuGUI implements Observer{
       JFrame frame = new JFrame("Gomoku");
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       frame.setLocation(200, 200);
+      frame.setSize(500, 500);
+      frame.setResizable(false);
       frame.setVisible(true);
       
       layout = new SpringLayout();
 
       gameGridPanel = new GamePanel(gamestate.getGameGrid());
-      messageLabel = new JLabel();
+      messageLabel = new JLabel("Welcome to Gomoku!");
       connectButton = new JButton("Connect");
       newGameButton = new JButton("New Game");
       disconnectButton = new JButton("Disconnect");
@@ -58,7 +60,24 @@ public class GomokuGUI implements Observer{
       contentPane.add(disconnectButton);
       contentPane.add(messageLabel);
       
-      layout.putConstraint(SpringLayout.WEST, gameGridPanel, 5, SpringLayout.WEST, contentPane);
+      layout.putConstraint(SpringLayout.HORIZONTAL_CENTER, gameGridPanel, 0, SpringLayout.HORIZONTAL_CENTER, contentPane);
+      layout.putConstraint(SpringLayout.NORTH, gameGridPanel, 0, SpringLayout.NORTH, contentPane);
+      
+      layout.putConstraint(SpringLayout.NORTH, connectButton, 20, SpringLayout.SOUTH, gameGridPanel);
+      layout.putConstraint(SpringLayout.EAST, connectButton, -10, SpringLayout.WEST, newGameButton);
+      
+      layout.putConstraint(SpringLayout.HORIZONTAL_CENTER, newGameButton, -10, SpringLayout.HORIZONTAL_CENTER, gameGridPanel);
+      layout.putConstraint(SpringLayout.NORTH, newGameButton, 20, SpringLayout.SOUTH, gameGridPanel);
+      
+      layout.putConstraint(SpringLayout.NORTH, disconnectButton, 20, SpringLayout.SOUTH, gameGridPanel);
+      layout.putConstraint(SpringLayout.WEST, disconnectButton, 20, SpringLayout.EAST, newGameButton);
+      
+     
+      layout.putConstraint(SpringLayout.HORIZONTAL_CENTER, messageLabel, 0, SpringLayout.HORIZONTAL_CENTER, contentPane);
+      layout.putConstraint(SpringLayout.NORTH, messageLabel, 10, SpringLayout.SOUTH, newGameButton);
+      
+      
+      frame.setContentPane(contentPane);
      
    }
 
