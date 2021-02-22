@@ -1,4 +1,3 @@
-package lab4;
 
 
 import lab4.client.GomokuClient;
