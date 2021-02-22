@@ -2,7 +2,7 @@ package lab4.gui;
 import java.awt.Container;
 import java.util.Observable;
 import java.util.Observer;
-
+import java.awt.event.*;
 import lab4.client.GomokuClient;
 import lab4.data.GomokuGameState;
 
@@ -23,7 +23,11 @@ public class GomokuGUI implements Observer{
    private JButton disconnectButton;
 
    /**
-    * The constructor
+    * The constructor, initializes five components and the JFrame.
+    * Five Components: gameGridpanel, messageLabel, connectButton, newGameButton and disconnectbutton. 
+    * Creates an Container with a layout. 
+    * Adds the components into the Container.
+    * Gives them positions relative to each other. 
     *
     * @param g   The game state that the GUI will visualize
     * @param c   The client that is responsible for the communication
@@ -52,6 +56,7 @@ public class GomokuGUI implements Observer{
       newGameButton = new JButton("New Game");
       disconnectButton = new JButton("Disconnect");
       
+      //Adding the components to the contentPane (Container)
       contentPane = frame.getContentPane();
       contentPane.setLayout(layout);
       contentPane.add(gameGridPanel);
@@ -60,6 +65,7 @@ public class GomokuGUI implements Observer{
       contentPane.add(disconnectButton);
       contentPane.add(messageLabel);
       
+      // Positioning the components with the layout
       layout.putConstraint(SpringLayout.HORIZONTAL_CENTER, gameGridPanel, 0, SpringLayout.HORIZONTAL_CENTER, contentPane);
       layout.putConstraint(SpringLayout.NORTH, gameGridPanel, 0, SpringLayout.NORTH, contentPane);
       
@@ -78,8 +84,41 @@ public class GomokuGUI implements Observer{
       
       
       frame.setContentPane(contentPane);
-     
+      
+      //Anonymous classes
+      
+   
+      connectButton.addActionListener(new ActionListener() {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			ConnectionWindow cw = new ConnectionWindow(client);
+		}
+    	 
+      });
+      
+      
+      newGameButton.addActionListener(new ActionListener()
+      {
+         @Override
+         public void actionPerformed(ActionEvent e)
+         {
+            gamestate.newGame();
+         }
+      });
+      
+      disconnectButton.addActionListener(new ActionListener()
+      {
+         @Override
+         public void actionPerformed(ActionEvent e)
+         {
+            gamestate.disconnect();
+         }
+      });
    }
+  
+  
 
 
    public void update(Observable arg0, Object arg1) {
