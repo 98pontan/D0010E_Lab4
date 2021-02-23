@@ -29,7 +29,7 @@ public class GameGrid extends Observable
       {
          for (int j = 0; j < gameGridList.length; j++)
          {
-            gameGridList[i][j] = 0;
+            gameGridList[i][j] = 1;
          }
       }
    }
@@ -68,18 +68,24 @@ public class GameGrid extends Observable
    {
       xLastPos = x;
       yLastPos = y;
+      System.out.println("Inside move GameGrid");
 
-      if (player == OTHER)
+      if (player == OTHER) {
+    	  System.out.println("Other Player");
          return false;
+      }
 
-      else if (gameGridList[x][y] != EMPTY)
+      else if (gameGridList[x][y] != EMPTY) {
+    	  System.out.println("Not empty");
          return false;
+      }
 
       else
       {
          gameGridList[x][y] = player;
          setChanged();
          notifyObservers();
+         System.out.println("true");
          return true;
       }
    }
@@ -93,7 +99,7 @@ public class GameGrid extends Observable
       {
          for (int j = 0; j < gameGridList.length; j++)
          {
-            gameGridList[i][j] = 0;
+            gameGridList[i][j] = 1;
          }
       }
       setChanged();

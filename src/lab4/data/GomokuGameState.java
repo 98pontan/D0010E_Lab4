@@ -70,24 +70,36 @@ public class GomokuGameState extends Observable implements Observer{
     * @param x the x coordinate
     * @param y the y coordinate
     */
-   public void move(int x, int y){
-      if (currentState == MY_TURN && gameGrid.move(x, y, MY_TURN)){
-         client.sendMoveMessage(x, y);
-         message = "Smart move";
-
-         if(gameGrid.isWinner(MY_TURN))
-         {
-            currentState = FINISHED;
-            message = "Winner Winner chicken dinner!";
-            return;
-           
-         }
-         currentState = OTHER_TURN;
-         notifyObservers();
-         setChanged();
+   @SuppressWarnings("deprecation")
+public void move(int x, int y)
+   {
+      if (currentState == MY_TURN){
+    	  
+    	  if(gameGrid.move(x, y, MY_TURN)) 
+    	  {  
+    		 message = "Smart move";
+	         client.sendMoveMessage(x, y);
+	         System.out.println("x: " + x + "y: " + y);
+	         
+	         if(gameGrid.isWinner(MY_TURN))
+	         {
+	        	System.out.println("Is winner?");
+	            currentState = FINISHED;
+	            message = "Winner Winner chicken dinner!";
+	            notifyObservers();
+	        	setChanged();
+	         }
+	         else {
+	        	 currentState = OTHER_TURN;
+	        	 notifyObservers();
+	        	 setChanged();
+	         }
+    	  }
+    	  else
+    		  message = "Occupide space, select another";
+    	  
       }
-      else if (!gameGrid.move(x, y, MY_TURN))
-         message = "Occupide space, select another";
+      
       
       else if(currentState == NOT_STARTED) {
     	  message = "Not started";

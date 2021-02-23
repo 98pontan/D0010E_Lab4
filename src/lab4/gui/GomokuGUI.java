@@ -97,6 +97,7 @@ public class GomokuGUI implements Observer{
 
     		  // Width of the cells
     		  int xyWidth = 20;
+    		  System.out.println(gameGridPanel.getSize().height);
 
     		  // Illegal index
     		  int illegalIndex = gameGridPanel.getSize().height/xyWidth;
