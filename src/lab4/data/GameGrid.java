@@ -70,12 +70,7 @@ public class GameGrid extends Observable
       yLastPos = y;
       System.out.println("Inside move GameGrid");
 
-      if (player == OTHER) {
-    	  System.out.println("Other Player");
-         return false;
-      }
-
-      else if (gameGridList[x][y] != EMPTY) {
+     if (gameGridList[x][y] != EMPTY) {
     	  System.out.println("Not empty");
          return false;
       }
@@ -175,7 +170,6 @@ public class GameGrid extends Observable
          {
             offset = 15 - 5;
             x = xLastPos + (i - offset);
-            System.out.println("x: " + x + "i: " + i);
             if (x >= gameGridList.length)
                continue;
 
