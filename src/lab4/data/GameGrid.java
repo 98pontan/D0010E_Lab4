@@ -141,7 +141,7 @@ public class GameGrid extends Observable
          }
 
          //look down
-         else if (i < 10)
+         else if (i < 10 && i >= 5)
          {
             offset = down - 5;
 
@@ -188,7 +188,7 @@ public class GameGrid extends Observable
          }
 
          //look to the left
-         else if (i < 20)
+         else if (i < 20 && i >= 15)
          {
             offset = 20 - 5;
 
