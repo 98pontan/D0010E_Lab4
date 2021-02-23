@@ -1,5 +1,6 @@
 package lab4.gui;
 import java.awt.Container;
+import java.awt.GridBagConstraints;
 import java.util.Observable;
 import java.util.Observer;
 import java.awt.event.*;
@@ -87,6 +88,37 @@ public class GomokuGUI implements Observer{
       
       //Anonymous classes
       
+      gameGridPanel.addMouseListener(new MouseAdapter() {
+    	  
+    	  public void mouseReleased(MouseEvent mouseEvent)  
+    	  {
+    		  int x = mouseEvent.getX();
+    		  int y = mouseEvent.getY();
+
+    		  // Width of the cells
+    		  int xyWidth = 20;
+
+    		  // Illegal index
+    		  int illegalIndex = gameGridPanel.getSize().height/xyWidth;
+    		  
+    		  // Divide by the width to get the array position
+    		  int xIndex = (int) Math.floor(x / xyWidth);
+    		  int yIndex = (int) Math.floor(y / xyWidth);
+    		  
+    		  if (xIndex == illegalIndex)
+    		  {
+    			  xIndex = illegalIndex - 1;
+    		  }
+    		  
+    		  if (yIndex == illegalIndex)
+    		  {
+    			  yIndex = illegalIndex - 1;
+    		  }
+    		  
+//    		  System.out.println("X: " +  xIndex + ", Y:" + yIndex);
+    	      gamestate.move(xIndex, yIndex);
+    	  }
+      });
    
       connectButton.addActionListener(new ActionListener() {
 
@@ -96,7 +128,7 @@ public class GomokuGUI implements Observer{
 			ConnectionWindow cw = new ConnectionWindow(client);
 		}
     	 
-      });
+     });
       
       
       newGameButton.addActionListener(new ActionListener()
@@ -119,7 +151,7 @@ public class GomokuGUI implements Observer{
    }
   
   
-
+   
 
    public void update(Observable arg0, Object arg1) {
 
