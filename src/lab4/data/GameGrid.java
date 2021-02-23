@@ -213,7 +213,7 @@ public class GameGrid extends Observable
          }
 
          //look down a cross to the left
-         if (i < 25)
+         if (i < 25 && i >= 20)
          {
             offset = 25 - 5;
             x = xLastPos - (i - offset);
@@ -230,7 +230,7 @@ public class GameGrid extends Observable
          }
 
          //look up across to the right
-         else if (i < 30)
+         else if (i < 30 && i >= 25)
          {
             offset = 30 - 5;
 
