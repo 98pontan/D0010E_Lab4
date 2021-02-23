@@ -77,8 +77,8 @@ public void move(int x, int y)
     	  
     	  if(gameGrid.move(x, y, MY_TURN)) 
     	  {  
-    		 message = "Smart move";
 	         client.sendMoveMessage(x, y);
+	         message = "Smart move";
 	         System.out.println("x: " + x + "y: " + y);
 	         
 	         if(gameGrid.isWinner(MY_TURN))
@@ -88,15 +88,18 @@ public void move(int x, int y)
 	            message = "Winner Winner chicken dinner!";
 	            notifyObservers();
 	        	setChanged();
+	        	return;
 	         }
 	         else {
 	        	 currentState = OTHER_TURN;
 	        	 notifyObservers();
 	        	 setChanged();
+	        	 return;
 	         }
     	  }
     	  else
     		  message = "Occupide space, select another";
+    	  
     	  
       }
       

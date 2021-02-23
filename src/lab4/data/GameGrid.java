@@ -68,7 +68,7 @@ public class GameGrid extends Observable
    {
       xLastPos = x;
       yLastPos = y;
-      System.out.println("Inside move GameGrid");
+      System.out.println("Inside move GameGrid, x:" + x + "y: " + y);
 
      if (gameGridList[x][y] == EMPTY) {
     	 gameGridList[x][y] = player;
@@ -102,26 +102,24 @@ public class GameGrid extends Observable
 
    /**
     * Check if a player has 5 in row
-    * checks 6 instead of 5 right now, unnecessary but wont effect the program
     * @param player the player to check for
     * @return true if player has 5 in row, false otherwise
     */
    public boolean isWinner(int player)
    {
-      int down = 10;
       int x;
       int y = 0;
 
       int directions = 8;
       int flagWinner = 0;
       int offset;
-
+      
       for (int i = 0; i < directions * INROW; i++)
       {
-
+    	  y = yLastPos + i;
          if (y >= gameGridList.length)
             continue;
-         //look up
+         //look down
          if (i < 5)
          {
             if (gameGridList[xLastPos][yLastPos + i] == player)
@@ -131,19 +129,19 @@ public class GameGrid extends Observable
             }
             else
                i = 5;
-
          }
 
-         //look down
+         //look up
          else if (i < 10 && i >= 5)
          {
-            offset = down - 5;
+            offset = 10 - 5;
 
             y = yLastPos - (i - offset);
+            System.out.println("Value of y: " + y);
             if (y < 0)
                continue;
 
-            if (gameGridList[xLastPos][yLastPos - (i - offset)] == player)
+            if (gameGridList[xLastPos][y] == player)
             {
                flagWinner++;
                continue;
@@ -154,13 +152,14 @@ public class GameGrid extends Observable
                i = 10;
             }
          }
+         System.out.println("Winner " + flagWinner);
 
          //See if the pieces above and below are 5 in a row
          if (i == 10)
          {
             if (flagWinner >= INROW)
                return true;
-
+            	
             flagWinner = 0;
          }
 
@@ -264,7 +263,7 @@ public class GameGrid extends Observable
             else
                i = 35;
          }
-
+         
          //look up across to the left
          else if (i < 40 && i >= 35)
          {
