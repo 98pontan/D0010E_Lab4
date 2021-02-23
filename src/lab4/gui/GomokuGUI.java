@@ -98,8 +98,8 @@ public class GomokuGUI implements Observer{
     		  int xyWidth = 20;
 
     		  // Divide by the width to get the array position
-    		  int xIndex = (int)Math.floor(x / xyWidth);
-    		  int yIndex = (int)Math.floor(y / xyWidth);
+    		  int xIndex = (int) Math.floor(x / xyWidth);
+    		  int yIndex = (int) Math.floor(y / xyWidth);
     		  
 //    		  System.out.println("X: " +  xIndex + ", Y:" + yIndex);
     	      gamestate.move(xIndex, yIndex);
