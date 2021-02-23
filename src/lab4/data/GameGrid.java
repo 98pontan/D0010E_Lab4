@@ -70,18 +70,17 @@ public class GameGrid extends Observable
       yLastPos = y;
       System.out.println("Inside move GameGrid");
 
-     if (gameGridList[x][y] != EMPTY) {
-    	  System.out.println("Not empty");
-         return false;
-      }
-
-      else
-      {
-         gameGridList[x][y] = player;
+     if (gameGridList[x][y] == EMPTY) {
+    	 gameGridList[x][y] = player;
          setChanged();
          notifyObservers();
          System.out.println("true");
          return true;
+      }
+
+      else
+      {
+        return false;
       }
    }
 
