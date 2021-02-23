@@ -87,6 +87,24 @@ public class GomokuGUI implements Observer{
       
       //Anonymous classes
       
+      gameGridPanel.addMouseListener(new MouseAdapter() {
+    	  
+    	  public void mouseReleased(MouseEvent mouseEvent)  
+    	  {
+    		  int x = mouseEvent.getX();
+    		  int y = mouseEvent.getY();
+
+    		  // Width of the cells
+    		  int xyWidth = 20;
+
+    		  // Divide by the width to get the array position
+    		  int xIndex = (int)Math.floor(x / xyWidth);
+    		  int yIndex = (int)Math.floor(y / xyWidth);
+    		  
+//    		  System.out.println("X: " +  xIndex + ", Y:" + yIndex);
+    	      gamestate.move(xIndex, yIndex);
+    	  }
+      });
    
       connectButton.addActionListener(new ActionListener() {
 
@@ -96,7 +114,7 @@ public class GomokuGUI implements Observer{
 			ConnectionWindow cw = new ConnectionWindow(client);
 		}
     	 
-      });
+     });
       
       
       newGameButton.addActionListener(new ActionListener()
@@ -119,7 +137,7 @@ public class GomokuGUI implements Observer{
    }
   
   
-
+   
 
    public void update(Observable arg0, Object arg1) {
 
