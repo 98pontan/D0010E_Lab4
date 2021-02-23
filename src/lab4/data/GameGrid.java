@@ -171,10 +171,11 @@ public class GameGrid extends Observable
          }
 
          //look to the right
-         if (i < 10)
+         else if (i < 15 && i >= 10)
          {
             offset = 15 - 5;
             x = xLastPos + (i - offset);
+            System.out.println("x: " + x + "i: " + i);
             if (x >= gameGridList.length)
                continue;
 
@@ -255,7 +256,7 @@ public class GameGrid extends Observable
          }
 
          //Look down across to the right
-         else if (i < 35)
+         else if (i < 35 && i >= 30)
          {
             offset = 35 - 5;
             x = xLastPos + (i - offset);
@@ -272,7 +273,7 @@ public class GameGrid extends Observable
          }
 
          //look up across to the left
-         else
+         else if (i < 40 && i >= 35)
          {
             offset = 40 - 5;
             x = xLastPos - (i - offset);
