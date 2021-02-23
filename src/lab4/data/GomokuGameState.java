@@ -79,13 +79,35 @@ public class GomokuGameState extends Observable implements Observer{
          {
             currentState = FINISHED;
             message = "Winner Winner chicken dinner!";
+            return;
+           
          }
          currentState = OTHER_TURN;
          notifyObservers();
          setChanged();
       }
-      else
+      else if (!gameGrid.move(x, y, MY_TURN))
          message = "Occupide space, select another";
+      
+      else if(currentState == NOT_STARTED) {
+    	  message = "Not started";
+    	  setChanged();
+    	  notifyObservers();
+    	  return;
+      }
+      
+      else if(currentState == FINISHED) {
+    	  message = "Game is finished";
+    	  setChanged();
+    	  notifyObservers();
+    	  return;
+      }
+      
+      else {
+    	  message = "Not your turn";
+    	  setChanged();
+    	  notifyObservers();
+      }
    }
 
    /**
