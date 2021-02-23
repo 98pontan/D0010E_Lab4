@@ -105,7 +105,174 @@ public class GameGrid extends Observable
     * @param player the player to check for
     * @return true if player has 5 in row, false otherwise
     */
+   
    public boolean isWinner(int player)
+   {
+	   int flagWinner = 0;
+	   int xCheck = 0;
+	   int yCheck = 0;
+	   
+	   //Down
+	   for(int i = 0; i < 5; i++) 
+	   {
+		   yCheck = yLastPos + i;
+		   
+		   if(yCheck >= gameGridList.length)
+			   break;
+		   
+		   if (gameGridList[xLastPos][yCheck] == player)
+           {
+              flagWinner++;
+              continue;
+           }
+	   }
+	   
+	   //Up
+	   for(int i = 0; i < 5; i++) 
+	   {
+		   yCheck = yLastPos - i;
+		   
+		   if(yCheck < 0)
+			   break;
+		   
+		   if (gameGridList[xLastPos][yLastPos - i] == player)
+           {
+              flagWinner++;
+              continue;
+           }
+	   }
+	   
+	   //Check up and down
+	   if(flagWinner >= INROW) {
+		   return true;
+	   }
+	   
+	   else
+		   flagWinner = 0;
+	   
+	   
+	   //Right
+	   for(int i = 0; i < 5; i++) 
+	   {
+		   xCheck = xLastPos + i;
+		   if(xCheck >= gameGridList.length)
+			   break;
+		   
+		   if (gameGridList[xLastPos + i][yLastPos] == player)
+           {
+              flagWinner++;
+              continue;
+           }
+	   }
+	   
+	   //Left
+	   for(int i = 0; i < 5; i++) 
+	   {
+		   xCheck = xLastPos - i;
+		   if(xCheck < 0)
+			   break;
+		   
+		   if (gameGridList[xLastPos - i][yLastPos] == player)
+           {
+              flagWinner++;
+              continue;
+           }
+	   }
+	   
+	   //Check left and right
+	   if(flagWinner >= INROW) {
+		   return true;
+	   }
+	   
+	   else
+		   flagWinner = 0;
+	   
+	  
+	   //Down left
+	   for(int i = 0; i < 5; i++) 
+	   {
+		   xCheck = xLastPos - i;
+		   yCheck = yLastPos + i;
+		   
+		   if(xCheck < 0 || yCheck >= gameGridList.length)
+			   break;
+		   
+		   if (gameGridList[xLastPos - i][yLastPos + i] == player)
+           {
+              flagWinner++;
+              continue;
+           }
+	   }
+	   
+	   //Up right
+	   for(int i = 0; i < 5; i++) 
+	   {
+		   xCheck = xLastPos + i;
+		   yCheck = yLastPos - i;
+		   
+		   if(yCheck < 0 || xCheck >= gameGridList.length)
+			   break;
+		   
+		   if (gameGridList[xLastPos + i][yLastPos - i] == player)
+           {
+              flagWinner++;
+              continue;
+           }
+	   }
+	   
+	   //Check Down left and Up right
+	   if(flagWinner >= INROW) {
+		   return true;
+	   }
+	   
+	   else
+		   flagWinner = 0;
+	   
+	   
+	   //Up left
+	   for(int i = 0; i < 5; i++) 
+	   {
+		   xCheck = xLastPos - i;
+		   yCheck = yLastPos - i;
+		   
+		   if(xCheck < 0 || yCheck < 0)
+			   break;
+		   
+		   if (gameGridList[xLastPos - i][yLastPos - i] == player)
+           {
+              flagWinner++;
+              continue;
+           }
+	   }
+	   
+	   //Down right
+	   for(int i = 0; i < 5; i++) 
+	   {
+		   xCheck = xLastPos + i;
+		   yCheck = yLastPos + i;
+		   
+		   if(xCheck >= gameGridList.length || yCheck >= gameGridList.length)
+			   break;
+		   
+		   if (gameGridList[xLastPos + i][yLastPos + i] == player)
+           {
+              flagWinner++;
+              continue;
+           }
+	   }
+	   
+	   //Up left and Down right
+	   if(flagWinner >= INROW) {
+		   return true;
+	   }
+	   
+	   else
+		   flagWinner = 0;
+	   
+	   
+	   return false;
+   }
+  /* public boolean isWinner(int player)
    {
       int x;
       int y = 0;
@@ -116,7 +283,7 @@ public class GameGrid extends Observable
       
       for (int i = 0; i < directions * INROW; i++)
       {
-    	  y = yLastPos + i;
+    	 y = yLastPos + i;
          if (y >= gameGridList.length)
             continue;
          //look down
@@ -283,6 +450,6 @@ public class GameGrid extends Observable
       }
       return false;
    }
-
+*/
 
 }
