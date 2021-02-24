@@ -128,7 +128,7 @@ public class GameGrid extends Observable
 	   }
 	   
 	   //Up
-	   for(int i = 0; i < 5; i++) 
+	   for(int i = 1; i < 5; i++) 
 	   {
 		   yCheck = yLastPos - i;
 		   
@@ -144,6 +144,7 @@ public class GameGrid extends Observable
 	   
 	   //Check up and down
 	   if(flagWinner >= INROW) {
+		   System.out.println("Up and Down: " + flagWinner);
 		   return true;
 	   }
 	   
@@ -166,7 +167,7 @@ public class GameGrid extends Observable
 	   }
 	   
 	   //Left
-	   for(int i = 0; i < 5; i++) 
+	   for(int i = 1; i < 5; i++) 
 	   {
 		   xCheck = xLastPos - i;
 		   if(xCheck < 0)
@@ -181,6 +182,7 @@ public class GameGrid extends Observable
 	   
 	   //Check left and right
 	   if(flagWinner >= INROW) {
+		   System.out.println("Left and Right: " + flagWinner);
 		   return true;
 	   }
 	   
@@ -205,7 +207,7 @@ public class GameGrid extends Observable
 	   }
 	   
 	   //Up right
-	   for(int i = 0; i < 5; i++) 
+	   for(int i = 1; i < 5; i++) 
 	   {
 		   xCheck = xLastPos + i;
 		   yCheck = yLastPos - i;
@@ -222,6 +224,7 @@ public class GameGrid extends Observable
 	   
 	   //Check Down left and Up right
 	   if(flagWinner >= INROW) {
+		   System.out.println("Down left and Up right: " + flagWinner);
 		   return true;
 	   }
 	   
@@ -246,7 +249,7 @@ public class GameGrid extends Observable
 	   }
 	   
 	   //Down right
-	   for(int i = 0; i < 5; i++) 
+	   for(int i = 1; i < 5; i++) 
 	   {
 		   xCheck = xLastPos + i;
 		   yCheck = yLastPos + i;
@@ -263,6 +266,7 @@ public class GameGrid extends Observable
 	   
 	   //Up left and Down right
 	   if(flagWinner >= INROW) {
+		   System.out.println("Up Left and Down right");
 		   return true;
 	   }
 	   
