@@ -10,12 +10,14 @@ import lab4.data.GameGrid;
 
 /**
  * A panel providing a graphical view of the game board
+ * @author Pontus Eriksson Jirbratt
+ * @author Lucas Pettersson
  */
 
 @SuppressWarnings("serial")
 public class GamePanel extends JPanel implements Observer{
 
-   private final int UNIT_SIZE = 20;
+   private final int UNIT_SIZE = 23;
    private GameGrid grid;
 
    /**

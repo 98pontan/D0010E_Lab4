@@ -1,5 +1,8 @@
 package lab4;
-
+/**
+ * @author Pontus Eriksson Jirbratt
+ * @author Lucas Pettersson
+ */
 
 import lab4.client.GomokuClient;
 import lab4.data.GomokuGameState;

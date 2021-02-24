@@ -10,6 +10,8 @@ import java.util.Observer;
 
 /**
  * Represents the state of a game
+ * @author Pontus Eriksson Jirbratt
+ * @author Lucas Pettersson
  */
 
 public class GomokuGameState extends Observable implements Observer{

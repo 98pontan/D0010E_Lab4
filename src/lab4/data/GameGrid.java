@@ -4,7 +4,8 @@ import java.util.Observable;
 
 /**
  * Represents the 2-d game grid
- * 
+ * @author Pontus Eriksson Jirbratt
+ * @author Lucas Pettersson
  */
 
 public class GameGrid extends Observable
@@ -13,7 +14,7 @@ public class GameGrid extends Observable
    public static final int ME = 2;
    public static final int OTHER = 3;
 
-   private final int INROW = 5;
+   private final int INROW = 2;
    private int[][] gameGridList; 
    private int xLastPos;
    private int yLastPos;

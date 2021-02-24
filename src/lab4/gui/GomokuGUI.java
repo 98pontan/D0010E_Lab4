@@ -11,6 +11,8 @@ import javax.swing.*;
 
 /*
  * The GUI class
+ * @author Pontus Eriksson Jirbratt
+ * @author Lucas Pettersson
  */
 
 public class GomokuGUI implements Observer{
