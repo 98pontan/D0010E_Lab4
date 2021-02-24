@@ -97,31 +97,7 @@ public class GomokuGUI implements Observer{
     		  
     		  int pos[] = gameGridPanel.getGridPosition(x, y);
     		  gamestate.move(pos[1], pos[0]);
-    		/*
-    		  // Width of the cells
-    		  int xyWidth = 20;
-    		  System.out.println(gameGridPanel.getSize().height);
-
-    		  // Illegal index
-    		  int illegalIndex = gameGridPanel.getSize().height/xyWidth;
-    		  
-    		  // Divide by the width to get the array position
-    		  int xIndex = (int) Math.floor(x / xyWidth);
-    		  int yIndex = (int) Math.floor(y / xyWidth);
-    		  
-    		  if (xIndex == illegalIndex)
-    		  {
-    			  xIndex = illegalIndex - 1;
-    		  }
-    		  
-    		  if (yIndex == illegalIndex)
-    		  {
-    			  yIndex = illegalIndex - 1;
-    		  }
-    		  
-//    		  System.out.println("X: " +  xIndex + ", Y:" + yIndex);
-    	      gamestate.move(yIndex, xIndex);
-    	      */
+    	
     	  }
     	  
       });

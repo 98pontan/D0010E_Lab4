@@ -81,7 +81,7 @@ public class GamePanel extends JPanel implements Observer{
             // Draws this players marker
             if (grid.getLocation(i, j) == grid.ME){
                g.setColor(Color.red);
-               g.fillOval(row, column, UNIT_SIZE - 1, UNIT_SIZE- 1);
+               g.fillOval(row, column, UNIT_SIZE - 1 , UNIT_SIZE - 1);
                g.setColor(Color.BLACK);
             }
             // Draws the other players marker
