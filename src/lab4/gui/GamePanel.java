@@ -61,17 +61,15 @@ public class GamePanel extends JPanel implements Observer{
    }
 
    /**
-    * Paints the game grid
+    * Paints the game grid and players
     * @param g
     */
 
    public void paintComponent(Graphics g){
       super.paintComponent(g);
-      Graphics2D graphics2D = (Graphics2D) g;
-      Stroke regularStroke = graphics2D.getStroke();
       int row;
       int column;
-      int padding = 2;
+      
       for (int i = 0; i < grid.getSize(); i++)
       {
          for (int j = 0; j < grid.getSize(); j++)
@@ -79,23 +77,17 @@ public class GamePanel extends JPanel implements Observer{
             row = j * UNIT_SIZE;
             column = i * UNIT_SIZE;
             g.drawRect(row, column, UNIT_SIZE, UNIT_SIZE);
-
+            
+            // Draws this players marker
             if (grid.getLocation(i, j) == grid.ME){
                g.setColor(Color.red);
                g.fillOval(row, column, UNIT_SIZE - 1, UNIT_SIZE- 1);
                g.setColor(Color.BLACK);
-               //System.out.println("x: " + column + "y " + row);
             }
-
+            // Draws the other players marker
             else if(grid.getLocation(i, j) == grid.OTHER){
-               //graphics2D.setColor(Color.BLACK);
-               //graphics2D.setStroke(new BasicStroke(2));
                g.setColor(Color.BLACK);
                g.fillOval(row, column, UNIT_SIZE - 1, UNIT_SIZE- 1);
-               
-              // graphics2D.drawLine(column + padding, row + padding, column + UNIT_SIZE - padding, row + UNIT_SIZE - padding);
-              // graphics2D.drawLine(column, row - UNIT_SIZE + padding, column - UNIT_SIZE - padding, row + padding);
-              // graphics2D.setStroke(regularStroke);
             }
          }
       }
