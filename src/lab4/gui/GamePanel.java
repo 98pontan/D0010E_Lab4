@@ -88,8 +88,8 @@ public class GamePanel extends JPanel implements Observer{
             }
 
             else if(grid.getLocation(i, j) == grid.OTHER){
-               graphics2D.setColor(Color.BLACK);
-               graphics2D.setStroke(new BasicStroke(2));
+               //graphics2D.setColor(Color.BLACK);
+               //graphics2D.setStroke(new BasicStroke(2));
                g.setColor(Color.BLACK);
                g.fillOval(row, column, UNIT_SIZE - 1, UNIT_SIZE- 1);
                

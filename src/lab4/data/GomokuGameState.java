@@ -84,8 +84,8 @@ public void move(int x, int y)
 	         if(gameGrid.isWinner(MY_TURN))
 	         {
 	        	System.out.println("Is winner?");
+	        	message = "Winner Winner chicken dinner!";
 	            currentState = FINISHED;
-	            message = "Winner Winner chicken dinner!";
 	            notifyObservers();
 	        	setChanged();
 	        	return;
